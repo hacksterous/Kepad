@@ -1,4 +1,5 @@
 from TextVexMicro import textVex
+from pyb import delay
 import micropython
 keypadTimerFreq = 60
 def vex():
