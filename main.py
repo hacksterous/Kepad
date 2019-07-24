@@ -1,15 +1,5 @@
-from TextVexMicro import textVex
 import micropython
 keypadTimerFreq = 60
-def vex():
-    global keypadTimerFreq
-    micropython.alloc_emergency_exception_buf(100)
-    app = textVex("Calculator Vex", keypadTimerFreq)
-    app.mainLoop()
-
-#if __name__ == "__main__":
-#    vex()
-
 def test():
     global keypadTimerFreq
     from Keypad import *
