@@ -1,2 +1,2 @@
-# Kepad
-Keypad with STM32F40x microcontrollers.
+# Keypad
+MicroPython Keypad module with STM32F40x microcontrollers.
