@@ -58,9 +58,12 @@ class Keypad():
 
             if self.keys[key_code + col]['state'] > self.keys[key_code + col]['autort']:
                 if (key_code + col) in self.longp:
-                    #mimic a long press -- a different key press -- if key is pressed
+                    #mimic a long press -- send a different key code -- if key is pressed
                     #long enough
                     self.key_char =  (key_code + col + 100)
+                    #long press does not have auto repeat -- make the autorepeat
+                    #threshold very long! Crude, but works!
+                    self.keys[key_code + col]['autort'] = 100000
                 else:
                     #mimic a key release if kept pressed -- set state of the key to 0
                     #this will cause key_event to be set to '1' next time
@@ -68,7 +71,7 @@ class Keypad():
                     #the key has been kept pressed for the autorepeat threshold duration (10)
                     #set autorepeat threshold to a low value to repeat fast
                     self.keys[key_code + col]['autort'] = AUTORT_REPEAT
-                self.keys[key_code + col]['state'] = self.KEY_UP
+                    self.keys[key_code + col]['state'] = self.KEY_UP
 
         ## Deassert row.
         self.row_pins[self.scan_row].value(0)

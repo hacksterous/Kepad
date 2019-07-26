@@ -14,23 +14,23 @@ def test():
             '7', '8', '9', 'C',
            ]
 
-    longkeys = [
-            'sin(', 'cos(', 'exp(', ')',
-           ]
+    longkeys = {
+            12: '\bHello, ', 13:'\bWorld',
+           }
 
     keypad = Keypad(['PE10', 'PE9', 'PE8', 'PE7'], \
-            ['PE14', 'PE13', 'PE12', 'PE11'], {0, 1, 2, 3}, \
-			keypadTimerFreq)
+            ['PE14', 'PE13', 'PE12', 'PE11'], {12, 13}, \
+            keypadTimerFreq)
     hstry = None
     try:
         #for i in range(10000):
         while True:
             key = keypad.get_key()
             if key != None:
-				if key >= 100:
-					key = longkeys[key-100]
-				else:
-					key = keys[key]
+                if key >= 100:
+                    key = longkeys[key-100]
+                else:
+                    key = keys[key]
                 print(key, end='')
                 if hstry == '*' and key == '*':
                     break
