@@ -13,7 +13,7 @@ class Keypad():
     AUTORT_THRESHOLD = const (9)
     AUTORT_REPEAT = const (1)
 
-    def __init__(self, rows, cols, longPress={}, timerFreq=60):
+    def __init__(self, rows, cols, longPress={}, timerNum = 3, timerFreq=60):
         #longPress is the list of all keycodes that should have
         #an alternate keycode on a long press (instead of autorepeat)
         ## Initialise all keys to the UP state.
@@ -23,7 +23,7 @@ class Keypad():
         self.row_pins = [ Pin(pin_name, mode=Pin.OUT) for pin_name in rows ]
         ## Initialise column pins as inputs.
         self.col_pins = [ Pin(pin_name, mode=Pin.IN, pull=Pin.PULL_DOWN) for pin_name in self.cols ]
-        self.keypadTimer = Timer(5, freq=timerFreq)
+        self.keypadTimer = Timer(timerNum, freq=timerFreq)
         self.scan_row = 0
         self.longp = longPress
         self.key_char = None

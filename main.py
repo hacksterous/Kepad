@@ -20,7 +20,7 @@ def test():
 
     keypad = Keypad(['PE10', 'PE9', 'PE8', 'PE7'], \
             ['PE14', 'PE13', 'PE12', 'PE11'], {12, 13}, \
-            keypadTimerFreq)
+            5, keypadTimerFreq)
     hstry = None
     try:
         #for i in range(10000):
